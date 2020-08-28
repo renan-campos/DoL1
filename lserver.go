@@ -39,11 +39,10 @@ func pHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		lissajous.CheckFixParams(&newParams)
 		params = newParams
-	} else {
-		data, err := json.MarshalIndent(params, "", "  ")
-		if err != nil {
-			log.Fatalf("JSON marshaling failed: %s", err)
-		}
-		fmt.Fprintf(w, "%s\n", data)
 	}
+	data, err := json.MarshalIndent(params, "", "  ")
+	if err != nil {
+		log.Fatalf("JSON marshaling failed: %s", err)
+	}
+	fmt.Fprintf(w, "%s\n", data)
 }
