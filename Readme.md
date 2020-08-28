@@ -7,8 +7,10 @@ through HTTP. This Go program will then be dockerized, pushed to my Quay
 account, and deployed on an Openshift cluster.
 
 LServer is the standalone Go program that hosts the image on port 1337.
-GET on <LServer_IP>:1337/Params returns a JSON of the parameters.
-PUT on <LServer_IP>:1337 modifies the curve's parameters.
+  - GET on LSERVER_IP:1337 returns the gif.<br/>
+	- GET on LSERVER_IP:1337/Params returns a JSON of the parameters.<br/>
+	- PUT on LSERVER_IP:1337/Params modifies the curve's parameters.<br/>
 
-Use updateLServer.sh and the example.json JSON file to modify the curves
-parameters. Refresh the page after running to get the new curve image.
+To modify the curve, edit the numbers in example.json and run:
+$ curl -T example.json LSERVER_IP:1337
+Refresh the page after running to get the new curve image.
